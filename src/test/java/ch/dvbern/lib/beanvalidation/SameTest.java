@@ -17,12 +17,19 @@ package ch.dvbern.lib.beanvalidation;
 
 import java.util.Set;
 
-import javax.validation.*;
+import javax.validation.Configuration;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.ValidationException;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Testklasse für {@link Same} und {@link ch.dvbern.lib.beanvalidation.impl.SameValidator}
