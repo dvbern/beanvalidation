@@ -24,7 +24,6 @@
 	<name>lib-beanvalidation</name>
 
 	<description>Custom-Validators für Bean-Validierung (JSR 303)</description>
-	<!--<url>http://mvn-sites/dvbern-lib-beanvalidation</url>-->
 
 	<parent>
 		<groupId>ch.dvbern.oss.maven</groupId>
