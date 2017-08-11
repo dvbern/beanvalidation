@@ -15,6 +15,8 @@
 
 package ch.dvbern.oss.lib.beanvalidation.embeddables;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 
@@ -26,8 +28,10 @@ import ch.dvbern.oss.lib.beanvalidation.ValidSozialversicherungsnummer;
  */
 @Embeddable
 @ValidSozialversicherungsnummer
-public class Sozialversicherungsnummer {
+public class Sozialversicherungsnummer implements Serializable{
 
+	private static final long serialVersionUID = 295172599526673490L;
+	
 	private Long ahvNummer;
 
 	public Sozialversicherungsnummer() {
@@ -47,15 +51,15 @@ public class Sozialversicherungsnummer {
 	}
 
 	@Override
-	public boolean equals(final Object o) {
-		if (this == o) {
+	public boolean equals(final Object obj) {
+		if (this == obj) {
 			return true;
 		}
-		if (!(o instanceof Sozialversicherungsnummer)) {
+		if (!(obj instanceof Sozialversicherungsnummer)) {
 			return false;
 		}
 
-		Sozialversicherungsnummer that = (Sozialversicherungsnummer) o;
+		Sozialversicherungsnummer that = (Sozialversicherungsnummer) obj;
 
 		if (ahvNummer != null ? !ahvNummer.equals(that.ahvNummer) : that.ahvNummer != null) {
 			return false;

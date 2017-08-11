@@ -15,6 +15,8 @@
 
 package ch.dvbern.oss.lib.beanvalidation.embeddables;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 
@@ -26,8 +28,10 @@ import ch.dvbern.oss.lib.beanvalidation.ValidPCNummer;
  */
 @Embeddable
 @ValidPCNummer
-public class PCNummer {
+public class PCNummer implements Serializable{
 
+	private static final long serialVersionUID = -3843040777500623316L;
+	
 	@NotNull
 	private Long pcNummer;
 

@@ -15,6 +15,8 @@
 
 package ch.dvbern.oss.lib.beanvalidation.embeddables;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
@@ -27,7 +29,9 @@ import ch.dvbern.oss.lib.beanvalidation.ValidIBANNummer;
  */
 @Embeddable
 @ValidIBANNummer
-public class IBAN {
+public class IBAN implements Serializable {
+
+	private static final long serialVersionUID = 5564659012570142248L;
 
 	private static final int DB_IBAN_LENGTH = 34; // IBAN nummer kann maximal 34 Stellen umfassen
 	@NotNull
@@ -51,14 +55,14 @@ public class IBAN {
 	}
 
 	@Override
-	public boolean equals(final Object o) {
-		if (this == o) {
+	public boolean equals(final Object obj) {
+		if (this == obj) {
 			return true;
 		}
-		if (!(o instanceof IBAN)) {
+		if (!(obj instanceof IBAN)) {
 			return false;
 		}
-		final IBAN iban1 = (IBAN) o;
+		final IBAN iban1 = (IBAN) obj;
 		return !(iban != null ? !iban.equals(iban1.iban) : iban1.iban != null);
 	}
 
