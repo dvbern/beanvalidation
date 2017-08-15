@@ -20,7 +20,7 @@
 	<groupId>ch.dvbern.oss.lib.dvbern-lib-beanvalidation</groupId>
 	<artifactId>dvbern-lib-beanvalidation</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.7-SNAPSHOT</version>
+	<version>1.0.7</version>
 	<name>dvbern-lib-beanvalidation</name>
 
 	<description>Custom-Validators für Bean-Validierung (JSR 303)</description>
