@@ -19,7 +19,7 @@
 	<groupId>ch.dvbern.oss.lib.beanvalidation</groupId>
 	<artifactId>lib-beanvalidation</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.5-SNAPSHOT</version>
+	<version>1.0.4</version>
 	<name>lib-beanvalidation</name>
 
 	<description>Custom-Validators für Bean-Validierung (JSR 303)</description>
