@@ -17,9 +17,9 @@ package ch.dvbern.oss.lib.beanvalidation.impl;
 
 import javax.validation.ConstraintValidatorContext;
 
-import ch.dvbern.datatypes.SozialversicherungsNummer;
 import ch.dvbern.oss.lib.beanvalidation.ValidSozialversicherungsnummer;
 import ch.dvbern.oss.lib.beanvalidation.embeddables.Sozialversicherungsnummer;
+import ch.dvbern.oss.datatypes.SozialversicherungsNummer;
 
 /**
  * Implementation des {@link javax.validation.ConstraintValidator}s für {@link ValidSozialversicherungsnummer}

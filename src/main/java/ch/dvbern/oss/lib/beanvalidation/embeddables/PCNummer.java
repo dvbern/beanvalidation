@@ -20,7 +20,7 @@ import java.io.Serializable;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 
-import ch.dvbern.datatypes.PostkontoNummer;
+import ch.dvbern.oss.datatypes.PostkontoNummer;
 import ch.dvbern.oss.lib.beanvalidation.ValidPCNummer;
 
 /**

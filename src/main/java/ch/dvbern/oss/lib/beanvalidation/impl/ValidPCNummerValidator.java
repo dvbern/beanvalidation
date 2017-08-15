@@ -17,7 +17,7 @@ package ch.dvbern.oss.lib.beanvalidation.impl;
 
 import javax.validation.ConstraintValidatorContext;
 
-import ch.dvbern.datatypes.PostkontoNummer;
+import ch.dvbern.oss.datatypes.PostkontoNummer;
 import ch.dvbern.oss.lib.beanvalidation.ValidPCNummer;
 import ch.dvbern.oss.lib.beanvalidation.embeddables.PCNummer;
 
