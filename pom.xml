@@ -74,11 +74,10 @@
 			<version>1.0.2</version>
 			<scope>provided</scope>
 		</dependency>
-		<!--todo kofa Hier die neue oss version ideser lib verwenden-->
 		<dependency>
-			<groupId>ch.dvbern.lib</groupId>
+			<groupId>ch.dvbern.oss.lib.dvbern-lib-datatypes</groupId>
 			<artifactId>dvbern-lib-datatypes</artifactId>
-			<version>1.0.0</version>
+			<version>2.0.1</version>
 		</dependency>
 	</dependencies>
 
