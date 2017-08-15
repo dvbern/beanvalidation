@@ -76,7 +76,7 @@ public class IBAN implements Serializable {
 		String retVal = null;
 		if (iban != null) {
 			try {
-				retVal = new ch.dvbern.datatypes.IBAN(iban).toString();
+				retVal = new ch.dvbern.oss.datatypes.IBAN(iban).toString();
 			} catch (IllegalArgumentException x) {
 				retVal = iban;
 			}
@@ -87,7 +87,7 @@ public class IBAN implements Serializable {
 	}
 
 	public String extractClearingNumber() {
-		return new ch.dvbern.datatypes.IBAN(iban).extractClearingNr();
+		return new ch.dvbern.oss.datatypes.IBAN(iban).extractClearingNr();
 	}
 
 	/**

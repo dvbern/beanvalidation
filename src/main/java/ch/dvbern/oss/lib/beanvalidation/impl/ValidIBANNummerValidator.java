@@ -28,7 +28,7 @@ public class ValidIBANNummerValidator extends AbstractUninitializableConstraintV
 	@Override
 	public boolean isValid(final IBAN value, final ConstraintValidatorContext context) {
 		try {
-			return value.getIban() != null && new ch.dvbern.datatypes.IBAN(value.getIban()).isValid();
+			return value.getIban() != null && new ch.dvbern.oss.datatypes.IBAN(value.getIban()).isValid();
 		} catch (IllegalArgumentException x) {
 			return false;
 		}
