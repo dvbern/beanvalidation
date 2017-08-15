@@ -20,7 +20,7 @@
 	<groupId>ch.dvbern.oss.lib.dvbern-lib-beanvalidation</groupId>
 	<artifactId>dvbern-lib-beanvalidation</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.5</version>
+	<version>1.0.6</version>
 	<name>dvbern-lib-beanvalidation</name>
 
 	<description>Custom-Validators für Bean-Validierung (JSR 303)</description>
@@ -74,11 +74,10 @@
 			<version>1.0.2</version>
 			<scope>provided</scope>
 		</dependency>
-		<!--todo kofa Hier die neue oss version ideser lib verwenden-->
 		<dependency>
-			<groupId>ch.dvbern.lib</groupId>
+			<groupId>ch.dvbern.oss.lib.dvbern-lib-datatypes</groupId>
 			<artifactId>dvbern-lib-datatypes</artifactId>
-			<version>1.0.0</version>
+			<version>2.0.1</version>
 		</dependency>
 	</dependencies>
 
