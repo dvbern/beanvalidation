@@ -1,15 +1,13 @@
-# dvbern-lib-beanvalidation
+# beanvalidation
 
 This library provides custom validators for bean-validation (JSR 303)
 
 ## Getting Started
 
-These instructions will get you an overview on how to implement and use the dvbern-lib-beanvalidation library. See further down for installing or deployment notes.
+These instructions will get you an overview on how to implement and use the beanvalidation library. See further down for installing or deployment notes.
 
 
 ### Installing
-
-- TODO release library [lib-datatypes](https://github.com/dvbern/lib-swiss-datatypes)
 
 - Checkout the Library
 - run mvn clean install
@@ -17,14 +15,12 @@ These instructions will get you an overview on how to implement and use the dvbe
 
 ```
 <dependency>
-    <groupId>ch.dvbern.oss.lib.beanvalidation</groupId>
-    <artifactId>lib-beanvalidation</artifactId>
+    <groupId>ch.dvbern.oss.beanvalidation</groupId>
+    <artifactId>beanvalidation</artifactId>
     <version>(NEWEST_VERSION)</version>
 </dependency>
 
 ```
-
-
 
 
 ## Built With
@@ -44,7 +40,7 @@ One healthy social atmospehere is very important to us, wherefore we rate our Co
 
 * **DV Bern AG** - *Initial work* - [dvbern](https://github.com/dvbern)
 
-See also the list of [contributors](https://github.com/dvbern/lib-beanvalidation/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/dvbern/beanvalidation/contributors) who participated in this project.
 
 ## License
 
