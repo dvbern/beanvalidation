@@ -17,11 +17,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>ch.dvbern.oss.lib.dvbern-lib-beanvalidation</groupId>
-	<artifactId>dvbern-lib-beanvalidation</artifactId>
+	<groupId>ch.dvbern.oss.beanvalidation</groupId>
+	<artifactId>beanvalidation</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.7</version>
-	<name>dvbern-lib-beanvalidation</name>
+	<version>1.0.8</version>
+	<name>DVBern Beanvalidation</name>
 
 	<description>Custom-Validators für Bean-Validierung (JSR 303)</description>
 
@@ -75,15 +75,15 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>ch.dvbern.oss.lib.dvbern-lib-datatypes</groupId>
-			<artifactId>dvbern-lib-datatypes</artifactId>
-			<version>2.0.1</version>
+			<groupId>ch.dvbern.oss.datatypes</groupId>
+			<artifactId>datatypes</artifactId>
+			<version>2.0.2</version>
 		</dependency>
 	</dependencies>
 
 	<issueManagement>
 		<system>github-issues</system>
-		<url>https://github.com/dvbern/lib-beanvalidation/issues</url>
+		<url>https://github.com/dvbern/beanvalidation/issues</url>
 	</issueManagement>
 
 	<!-- Append sources into jar, for easier GWT compilation -->
