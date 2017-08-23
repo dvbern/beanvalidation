@@ -20,7 +20,7 @@
 	<groupId>ch.dvbern.oss.beanvalidation</groupId>
 	<artifactId>beanvalidation</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.8-SNAPSHOT</version>
+	<version>1.0.8</version>
 	<name>DVBern Beanvalidation</name>
 
 	<description>Custom-Validators für Bean-Validierung (JSR 303)</description>
