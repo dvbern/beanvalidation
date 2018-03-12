@@ -17,22 +17,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<parent>
+		<groupId>ch.dvbern.oss.maven</groupId>
+		<artifactId>parent</artifactId>
+		<version>1.0.5</version>
+	</parent>
+
 	<groupId>ch.dvbern.oss.beanvalidation</groupId>
 	<artifactId>beanvalidation</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0.10-SNAPSHOT</version>
+
 	<name>DVBern Beanvalidation</name>
-
 	<description>Custom-Validators für Bean-Validierung (JSR 303)</description>
-
-	<parent>
-		<groupId>ch.dvbern.oss.maven</groupId>
-		<artifactId>parent</artifactId>
-		<version>1.0.3</version>
-	</parent>
+	<url>http://github.com/dvbern/beanvalidation</url>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -85,9 +85,23 @@
 		<url>https://github.com/dvbern/beanvalidation/issues</url>
 	</issueManagement>
 
+	<developers>
+		<developer>
+			<name>DV Bern AG developers</name>
+			<email>hallo@dvbern.ch</email>
+			<organization>DV Bern AG</organization>
+			<organizationUrl>http://www.dvbern.ch</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git://github.com/dvbern/beanvalidation.git</connection>
+		<developerConnection>scm:git:ssh://github.com:dvbern/beanvalidation.git</developerConnection>
+		<url>http://github.com/dvbern/beanvalidation/tree/master</url>
+	</scm>
+
 	<!-- Append sources into jar, for easier GWT compilation -->
 	<build>
-
 		<pluginManagement>
 			<plugins>
 				<plugin>
