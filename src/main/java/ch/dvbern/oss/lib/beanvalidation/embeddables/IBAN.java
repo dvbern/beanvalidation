@@ -24,6 +24,8 @@ import javax.validation.constraints.Size;
 
 import ch.dvbern.oss.lib.beanvalidation.ValidIBANNummer;
 
+import static ch.dvbern.oss.lib.beanvalidation.util.StringHelper.trimLeadingZeros;
+
 /**
  * IBAN
  */
@@ -73,7 +75,7 @@ public class IBAN implements Serializable {
 
 	@Override
 	public String toString() {
-		String retVal = null;
+		String retVal;
 		if (iban != null) {
 			try {
 				retVal = new ch.dvbern.oss.datatypes.IBAN(iban).toString();
@@ -91,12 +93,15 @@ public class IBAN implements Serializable {
 	}
 
 	/**
-	 * Die Banken aus Nil+ haben die Clearing-Nummer nicht zwingend 5-stellig. Die aus der IBAN bezogene Clearing-Nummer ist aber immer
+	 * Die gewuenschte Clearingnummer wird manchmal ohne fuehrende Nullen gewuscht.
+	 * Die aus der IBAN bezogene Clearing-Nummer ist aber immer
 	 * 5-stellig, zum Vergleich muss sie daher mit führenden Nullen erweitert werden.
 	 *
-	 * @return die ClearingNummer
+	 * @return die ClearingNummer (aka BC)
 	 */
 	public String extractClearingNumberWithoutLeadingZeros() {
-		return Integer.valueOf(extractClearingNumber()).toString();
+		return trimLeadingZeros(extractClearingNumber());
 	}
+
+
 }
