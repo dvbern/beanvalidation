@@ -20,7 +20,7 @@
 	<parent>
 		<groupId>ch.dvbern.oss.maven</groupId>
 		<artifactId>parent</artifactId>
-		<version>1.0.5</version>
+		<version>1.1.1</version>
 	</parent>
 
 	<groupId>ch.dvbern.oss.beanvalidation</groupId>
