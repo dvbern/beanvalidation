@@ -18,6 +18,7 @@ package ch.dvbern.oss.lib.beanvalidation;
 import javax.validation.Valid;
 
 import ch.dvbern.oss.lib.beanvalidation.embeddables.IBAN;
+import org.junit.Assert;
 import org.junit.Test;
 
 import static ch.dvbern.oss.lib.beanvalidation.util.ValidationTestHelper.assertNotViolated;
@@ -52,6 +53,48 @@ public class ValidIBANTest {
 
 		bean.setIban(new IBAN(""));
 		assertViolated(ValidIBANNummer.class, bean, "iban");
+
+		bean.setIban(new IBAN("NL53ABNA0205986478"));
+		assertNotViolated(ValidIBANNummer.class, bean, "iban");
+	}
+
+	@Test
+	public void testClearingNumberExtraction() {
+
+		Bean bean = new Bean();
+		bean.setIban(new IBAN("NL53ABNA0205986478"));
+		assertNotViolated(ValidIBANNummer.class, bean, "iban");
+		bean.getIban().extractClearingNumber();
+		bean.getIban().extractClearingNumberWithoutLeadingZeros();
+		Assert.assertEquals(bean.getIban().extractClearingNumberWithoutLeadingZeros(), bean.getIban()
+				.extractClearingNumber());
+
+		bean.setIban(new IBAN("CH39 0900 0000 3066 3817 2"));
+		assertNotViolated(ValidIBANNummer.class, bean, "iban");
+		String leadingZeroes = bean.getIban().extractClearingNumber();
+		String noLeadingZeroes = bean.getIban().extractClearingNumberWithoutLeadingZeros();
+		Assert.assertEquals("09000", leadingZeroes);
+		Assert.assertEquals("9000", noLeadingZeroes);
+
+		bean = new Bean();
+		bean.setIban(new IBAN("CH123456"));
+		assertViolated(ValidIBANNummer.class, bean, "iban");
+
+		try {
+			bean.getIban().extractClearingNumber();
+			Assert.fail("Invalid Iban should trigger exception when calling extractClearingNumber");
+		} catch (IllegalArgumentException e) {
+			//expected
+		}
+
+		try {
+			bean.getIban().extractClearingNumberWithoutLeadingZeros();
+			Assert.fail("Invalid Iban should trigger exception when calling extractClearingNumber");
+		} catch (IllegalArgumentException e) {
+			//expected
+		}
+		
+
 	}
 
 	public static class Bean {
