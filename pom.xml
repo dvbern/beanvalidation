@@ -20,7 +20,7 @@
 	<parent>
 		<groupId>ch.dvbern.oss.maven</groupId>
 		<artifactId>parent</artifactId>
-		<version>1.1.1</version>
+		<version>2.0.0</version>
 	</parent>
 
 	<groupId>ch.dvbern.oss.beanvalidation</groupId>
@@ -58,7 +58,7 @@
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
-			<version>1.9.3</version>
+			<version>1.9.4</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.findbugs</groupId>
