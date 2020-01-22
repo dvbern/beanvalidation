@@ -20,13 +20,13 @@
 	<parent>
 		<groupId>ch.dvbern.oss.maven</groupId>
 		<artifactId>parent</artifactId>
-		<version>1.1.1</version>
+		<version>2.0.0</version>
 	</parent>
 
 	<groupId>ch.dvbern.oss.beanvalidation</groupId>
 	<artifactId>beanvalidation</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.10</version>
+	<version>1.0.11</version>
 
 	<name>DVBern Beanvalidation</name>
 	<description>Custom-Validators für Bean-Validierung (JSR 303)</description>
@@ -58,7 +58,7 @@
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
-			<version>1.9.3</version>
+			<version>1.9.4</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.findbugs</groupId>
