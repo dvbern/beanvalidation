@@ -26,7 +26,7 @@
 	<groupId>ch.dvbern.oss.beanvalidation</groupId>
 	<artifactId>beanvalidation</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.11</version>
+	<version>1.1.0</version>
 
 	<name>DVBern Beanvalidation</name>
 	<description>Custom-Validators für Bean-Validierung (JSR 303)</description>
@@ -76,7 +76,7 @@
 		<dependency>
 			<groupId>ch.dvbern.oss.datatypes</groupId>
 			<artifactId>datatypes</artifactId>
-			<version>2.0.2</version>
+			<version>2.0.3</version>
 		</dependency>
 	</dependencies>
 
