@@ -5,4 +5,9 @@
 		<gav>javax.validation:validation-api:1.0.0.GA</gav>
 		<cpe>cpe:/a:bean_project:bean:7.x-1.0::~~~drupal~~</cpe>
 	</suppress>
+	<suppress>
+		<notes>This library does not depend on SafeHtml directly.</notes>
+		<packageUrl regex="true">^pkg:maven/org\.hibernate/hibernate\-validator@.*$</packageUrl>
+		<cve>CVE-2019-10219</cve>
+	</suppress>
 </suppressions>
