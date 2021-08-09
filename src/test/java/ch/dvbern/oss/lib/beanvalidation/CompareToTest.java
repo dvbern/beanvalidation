@@ -18,7 +18,7 @@ package ch.dvbern.oss.lib.beanvalidation;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static ch.dvbern.oss.lib.beanvalidation.util.ValidationTestHelper.assertNotViolated;
 import static ch.dvbern.oss.lib.beanvalidation.util.ValidationTestHelper.assertViolated;

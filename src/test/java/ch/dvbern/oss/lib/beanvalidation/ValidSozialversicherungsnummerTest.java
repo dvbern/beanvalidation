@@ -15,10 +15,13 @@
 
 package ch.dvbern.oss.lib.beanvalidation;
 
+import javax.annotation.Nullable;
 import javax.validation.Valid;
 
 import ch.dvbern.oss.lib.beanvalidation.embeddables.Sozialversicherungsnummer;
-import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static ch.dvbern.oss.lib.beanvalidation.util.ValidationTestHelper.assertNotViolated;
 import static ch.dvbern.oss.lib.beanvalidation.util.ValidationTestHelper.assertViolated;
@@ -28,31 +31,29 @@ import static ch.dvbern.oss.lib.beanvalidation.util.ValidationTestHelper.assertV
  */
 public class ValidSozialversicherungsnummerTest {
 
-	@Test
-	public void testValidSozialversNr() {
-		ValidIBANTest.Bean withoutAHV = new ValidIBANTest.Bean();
-		assertNotViolated(ValidSozialversicherungsnummer.class, withoutAHV, "ahvNr");
-
+	@SuppressWarnings("JUnitTestMethodWithNoAssertions")
+	@ParameterizedTest
+	@NullSource
+	@ValueSource(longs = { 7569217076985L, 7569217076985L })
+	public void testValidSozialversNr(@Nullable Long avhNr) {
 		Bean bean = new Bean();
-		bean.setAhvNr(new Sozialversicherungsnummer(new Long(1234567890123456789L)));
+		if (avhNr != null) {
+			bean.setAhvNr(new Sozialversicherungsnummer(avhNr));
+		}
 
-		assertViolated(ValidSozialversicherungsnummer.class, bean, "ahvNr");
-
-		bean = new Bean();
-		bean.setAhvNr(new Sozialversicherungsnummer(new Long(0)));
-		assertViolated(ValidSozialversicherungsnummer.class, bean, "ahvNr");
-
-		bean.setAhvNr(new Sozialversicherungsnummer(new Long(7569217076985L)));
 		assertNotViolated(ValidSozialversicherungsnummer.class, bean, "ahvNr");
+	}
 
-		bean.setAhvNr(new Sozialversicherungsnummer(Long.valueOf(7569227076983L)));
+	@SuppressWarnings("JUnitTestMethodWithNoAssertions")
+	@ParameterizedTest
+	@ValueSource(longs = { 1234567890123456789L, 0, 7569227076983L, 7569227076983L, 12345678901234L })
+	public void testInvalidSozialversNr(@Nullable Long avhNr) {
+		Bean bean = new Bean();
+		if (avhNr != null) {
+			bean.setAhvNr(new Sozialversicherungsnummer(avhNr));
+		}
+
 		assertViolated(ValidSozialversicherungsnummer.class, bean, "ahvNr");
-
-		bean.setAhvNr(new Sozialversicherungsnummer(new Long(12345678901234L)));
-		assertViolated(ValidSozialversicherungsnummer.class, bean, "ahvNr");
-
-		bean.setAhvNr(new Sozialversicherungsnummer(Long.valueOf(7569217076985L)));
-		assertNotViolated(ValidSozialversicherungsnummer.class, bean, "ahvNr");
 	}
 
 	public static class Bean {

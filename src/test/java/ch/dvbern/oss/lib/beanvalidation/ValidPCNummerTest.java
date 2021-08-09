@@ -15,10 +15,13 @@
 
 package ch.dvbern.oss.lib.beanvalidation;
 
+import javax.annotation.Nullable;
 import javax.validation.Valid;
 
 import ch.dvbern.oss.lib.beanvalidation.embeddables.PCNummer;
-import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static ch.dvbern.oss.lib.beanvalidation.util.ValidationTestHelper.assertNotViolated;
 import static ch.dvbern.oss.lib.beanvalidation.util.ValidationTestHelper.assertViolated;
@@ -28,23 +31,20 @@ import static ch.dvbern.oss.lib.beanvalidation.util.ValidationTestHelper.assertV
  */
 public class ValidPCNummerTest {
 
-	@Test
-	public void testValidSozialversNr() {
+	@ParameterizedTest
+	@NullSource
+	@ValueSource(longs = { 301045969L, 7569227076983L })
+	public void testInvalidSozialversNr(@Nullable Long value) {
 		Bean bean = new Bean();
-		bean.setPcNummer(new PCNummer(Long.valueOf(301045969L)));
+		bean.setPcNummer(new PCNummer(value));
 		assertViolated(ValidPCNummer.class, bean, "pcNummer");
+	}
 
-		bean = new Bean();
-		bean.setPcNummer(new PCNummer());
-		assertViolated(ValidPCNummer.class, bean, "pcNummer");
-
-		bean.setPcNummer(new PCNummer(new Long(10150006)));
-		assertNotViolated(ValidPCNummer.class, bean, "pcNummer");
-
-		bean.setPcNummer(new PCNummer(Long.valueOf(7569227076983L)));
-		assertViolated(ValidPCNummer.class, bean, "pcNummer");
-
-		bean.setPcNummer(new PCNummer(Long.valueOf(301045968L)));
+	@ParameterizedTest
+	@ValueSource(longs = 301045968L)
+	public void testValidSozialversNr(@Nullable Long value) {
+		Bean bean = new Bean();
+		bean.setPcNummer(new PCNummer(value));
 		assertNotViolated(ValidPCNummer.class, bean, "pcNummer");
 	}
 

@@ -15,47 +15,42 @@
 
 package ch.dvbern.oss.lib.beanvalidation;
 
+import javax.annotation.Nullable;
 import javax.validation.Valid;
 
 import ch.dvbern.oss.lib.beanvalidation.embeddables.IBAN;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static ch.dvbern.oss.lib.beanvalidation.util.ValidationTestHelper.assertNotViolated;
 import static ch.dvbern.oss.lib.beanvalidation.util.ValidationTestHelper.assertViolated;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * Testklasse für {@link ValidIBANNummer}
  */
 public class ValidIBANTest {
 
-	@Test
-	public void testValidIBAN() {
-		Bean withoutIban = new Bean();
-		assertNotViolated(ValidIBANNummer.class, withoutIban, "iban");
-
+	@SuppressWarnings("JUnitTestMethodWithNoAssertions")
+	@ParameterizedTest
+	@NullSource
+	@ValueSource(strings = { "CH3909000000306638172", "CH39 0900 0000 3066 3817 2", "NL53ABNA0205986478" })
+	public void testValidIBAN(@Nullable IBAN iban) {
 		Bean bean = new Bean();
-		bean.setIban(new IBAN("1234567890123456789"));
-		assertViolated(ValidIBANNummer.class, bean, "iban");
-
-		bean = new Bean();
-		bean.setIban(new IBAN("CH123456"));
-		assertViolated(ValidIBANNummer.class, bean, "iban");
-
-		bean.setIban(new IBAN("CH3909000000306638172"));
+		bean.setIban(iban);
 		assertNotViolated(ValidIBANNummer.class, bean, "iban");
+	}
 
-		bean.setIban(new IBAN("CH39 0900 0000 3066 3817 2"));
-		assertNotViolated(ValidIBANNummer.class, bean, "iban");
-
-		bean.setIban(new IBAN("CHE3909000000306638172"));
+	@SuppressWarnings("JUnitTestMethodWithNoAssertions")
+	@ParameterizedTest
+	@ValueSource(strings = { "1234567890123456789", "CH123456", "CHE3909000000306638172", "" })
+	public void testInvalidIBAN(@Nullable IBAN iban) {
+		Bean bean = new Bean();
+		bean.setIban(iban);
 		assertViolated(ValidIBANNummer.class, bean, "iban");
-
-		bean.setIban(new IBAN(""));
-		assertViolated(ValidIBANNummer.class, bean, "iban");
-
-		bean.setIban(new IBAN("NL53ABNA0205986478"));
-		assertNotViolated(ValidIBANNummer.class, bean, "iban");
 	}
 
 	@Test
@@ -66,15 +61,15 @@ public class ValidIBANTest {
 		assertNotViolated(ValidIBANNummer.class, bean, "iban");
 		bean.getIban().extractClearingNumber();
 		bean.getIban().extractClearingNumberWithoutLeadingZeros();
-		Assert.assertEquals(bean.getIban().extractClearingNumberWithoutLeadingZeros(), bean.getIban()
+		assertEquals(bean.getIban().extractClearingNumberWithoutLeadingZeros(), bean.getIban()
 				.extractClearingNumber());
 
 		bean.setIban(new IBAN("CH39 0900 0000 3066 3817 2"));
 		assertNotViolated(ValidIBANNummer.class, bean, "iban");
 		String leadingZeroes = bean.getIban().extractClearingNumber();
 		String noLeadingZeroes = bean.getIban().extractClearingNumberWithoutLeadingZeros();
-		Assert.assertEquals("09000", leadingZeroes);
-		Assert.assertEquals("9000", noLeadingZeroes);
+		assertEquals("09000", leadingZeroes);
+		assertEquals("9000", noLeadingZeroes);
 
 		bean = new Bean();
 		bean.setIban(new IBAN("CH123456"));
@@ -82,18 +77,17 @@ public class ValidIBANTest {
 
 		try {
 			bean.getIban().extractClearingNumber();
-			Assert.fail("Invalid Iban should trigger exception when calling extractClearingNumber");
+			fail("Invalid Iban should trigger exception when calling extractClearingNumber");
 		} catch (IllegalArgumentException e) {
 			//expected
 		}
 
 		try {
 			bean.getIban().extractClearingNumberWithoutLeadingZeros();
-			Assert.fail("Invalid Iban should trigger exception when calling extractClearingNumber");
+			fail("Invalid Iban should trigger exception when calling extractClearingNumber");
 		} catch (IllegalArgumentException e) {
 			//expected
 		}
-		
 
 	}
 
