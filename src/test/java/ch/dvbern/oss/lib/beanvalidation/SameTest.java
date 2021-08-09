@@ -25,12 +25,13 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
 import ch.dvbern.oss.lib.beanvalidation.impl.SameValidator;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Testklasse für {@link Same} und {@link SameValidator}
@@ -39,7 +40,7 @@ public class SameTest {
 
 	private Validator validator;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		Configuration config = Validation.byDefaultProvider().configure();
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
@@ -75,11 +76,11 @@ public class SameTest {
 		assertFalse(violations.isEmpty());
 	}
 
-	@Test(expected = ValidationException.class)
+	@Test
 	public void testNestedNull() {
 		Bean bean = createBean(null, "foo", null);
 		bean.setNested(null);
-		Set<ConstraintViolation<Bean>> violations = validator.validate(bean);
+		assertThrows(ValidationException.class, () -> validator.validate(bean));
 	}
 
 	private Bean createBean(String name, String selbigerName, String stringValue) {

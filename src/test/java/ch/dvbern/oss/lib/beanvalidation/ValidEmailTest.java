@@ -16,33 +16,31 @@
 package ch.dvbern.oss.lib.beanvalidation;
 
 import ch.dvbern.oss.lib.beanvalidation.util.ValidationTestHelper;
-import org.junit.Test;
-
-import static ch.dvbern.oss.lib.beanvalidation.util.ValidationTestHelper.assertNotViolated;
-import static ch.dvbern.oss.lib.beanvalidation.util.ValidationTestHelper.assertViolated;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 /**
  * Testklasse für {@link ValidEmail}
  */
 public class ValidEmailTest {
 
-	@Test
-	public void testValidEmail() {
+	@SuppressWarnings("JUnitTestMethodWithNoAssertions")
+	@ParameterizedTest
+	@ValueSource(strings = { "test@example.com", "test@example.accountants" })
+	public void testValidEmail(String email) {
 		Bean bean = new Bean();
-		bean.setEmail("invalidemail123");
-		ValidationTestHelper.assertViolated(ValidEmail.class, bean, "email");
+		bean.setEmail(email);
 
-		bean = new Bean();
-		bean.setEmail("invalid@nothing");
-		ValidationTestHelper.assertViolated(ValidEmail.class, bean, "email");
-
-		bean.setEmail("test@example.com");
 		ValidationTestHelper.assertNotViolated(ValidEmail.class, bean, "email");
+	}
 
-		bean.setEmail("test@example.accountants");
-		ValidationTestHelper.assertNotViolated(ValidEmail.class, bean, "email");
+	@SuppressWarnings("JUnitTestMethodWithNoAssertions")
+	@ParameterizedTest
+	@ValueSource(strings = { "invalidemail123", "invalid@nothing", "test@example.c" })
+	public void testInvalidEmail(String email) {
+		Bean bean = new Bean();
+		bean.setEmail(email);
 
-		bean.setEmail("test@example.c");
 		ValidationTestHelper.assertViolated(ValidEmail.class, bean, "email");
 	}
 

@@ -19,27 +19,26 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import static ch.dvbern.oss.lib.beanvalidation.util.ValidationTestHelper.assertNotViolated;
-import static ch.dvbern.oss.lib.beanvalidation.util.ValidationTestHelper.assertViolated;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit tests of the ch.dvbern.lib.beanvalidation.impl.ValidatorUtil.
  */
+@SuppressWarnings("JUnitTestMethodWithNoAssertions")
 public class ValidatorUtilTest {
 
-	private TestBean testBean;
+	private TestBean testBean = null;
 
-	@Before
+	@BeforeEach
 	public void before() {
 		testBean = new TestBean();
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test
 	public void testAssertViolatedError() {
-		ValidationTestHelper.assertNotViolated(testBean);
+		Assertions.assertThrows(AssertionError.class, () -> ValidationTestHelper.assertNotViolated(testBean));
 	}
 
 	@Test
@@ -53,10 +52,10 @@ public class ValidatorUtilTest {
 		ValidationTestHelper.assertViolated(Min.class, testBean);
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test
 	public void testAssertViolatedWithViolationAnnotationException() {
 		testBean.setNumber(0);
-		ValidationTestHelper.assertNotViolated(Min.class, testBean);
+		Assertions.assertThrows(AssertionError.class, () -> ValidationTestHelper.assertNotViolated(Min.class, testBean));
 	}
 
 	@Test
@@ -65,10 +64,11 @@ public class ValidatorUtilTest {
 		ValidationTestHelper.assertViolated(Min.class, testBean, "number");
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test
 	public void testAssertViolatedWithViolationAnnotationAndPropertyException() {
 		testBean.setNumber(0);
-		ValidationTestHelper.assertNotViolated(Min.class, testBean, "number");
+		Assertions.assertThrows(AssertionError.class, () ->
+		ValidationTestHelper.assertNotViolated(Min.class, testBean, "number"));
 	}
 
 	@Test
@@ -80,7 +80,7 @@ public class ValidatorUtilTest {
 	public static class TestBean {
 
 		@NotNull
-		private String name;
+		private String name = null;
 
 		@Max(value = 10)
 		@Min(value = 1)
